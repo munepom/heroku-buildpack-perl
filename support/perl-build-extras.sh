@@ -28,7 +28,7 @@ bin/cpanm --quiet --notest LWP::Protocol::https ## https://rt.cpan.org/Public/Bu
 bin/cpanm --quiet --installdeps HTTP::Server::Simple
 bin/cpanm --quiet --notest HTTP::Server::Simple ## 0.50 getaddrinfo / localhost fails on cedar stack
 bin/cpanm --quiet Task::Moose MooseX::Daemonize Mouse
-bin/cpanm --quiet Dancer Dancer2 Mojolicious Catalyst Catalyst::Devel
+bin/cpanm --quiet Dancer Dancer2 Mojolicious Mojo::Pg Catalyst Catalyst::Devel
 bin/cpanm --quiet Plack Starman Twiggy Carton local::lib
 bin/cpanm --quiet DBI DBIx::Class DBIx::Class::Schema::Loader DBIx::Class::Migration SQL::Translator
 bin/cpanm --quiet CHI Redis DBD::Pg Net::Amazon::S3
