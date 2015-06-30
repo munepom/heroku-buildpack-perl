@@ -93,6 +93,7 @@ fi
 
 status "Installing dependencies (cpanm)"
 perl -S cpanm --installdeps . 2>&1 | indent
+cat_cpanm_build_log
 
 status "Installing Starman"
 perl -S cpanm Starman 2>&1 | indent
