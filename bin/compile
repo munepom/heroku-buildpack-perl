@@ -40,6 +40,8 @@ if [ -n "$PERL_VERSION" ] && [ "$PERL_VERSION" != "system" ]; then
     mkdir -p "$BUILD_DIR/vendor/perl"
     curl -sL $PERL_PACKAGE | tar xzf - -C "$BUILD_DIR/vendor/perl" &> /dev/null
     export PATH="$BUILD_DIR/vendor/perl/bin:$PATH"
+    # Set up so we can use Perl right away
+    export PERL5LIB="$BUILD_DIR/vendor/perl/lib/$PERL_VERSION:$BUILD_DIR/vendor/perl/lib/site_perl/$PERL_VERSION"
     echo "export PATH=\"\$HOME/vendor/perl/bin:\$PATH\";" > $BUILD_DIR/.profile.d/buildpack_vendor_perl.sh
     for package in $PERL_LIBS; do
         PERL_PACKAGE="${PERL_URL%/}/perl-$PERL_VERSION-$package.tgz"
@@ -94,11 +96,11 @@ fi
 status "Installing dependencies (cpanm)"
 perl -S cpanm --installdeps . 2>&1 | indent
 
-# install Mojolicious
-curl -L https://cpanmin.us | perl - -M https://cpan.metacpan.org -n Mojolicious
+### install Mojolicious
+# curl -L https://cpanmin.us | perl - -M https://cpan.metacpan.org -n Mojolicious
 
-# install Mojo::Pg
-curl -L https://cpanmin.us | perl - -M https://cpan.metacpan.org -n Mojo::Pg
+### install Mojo::Pg
+# curl -L https://cpanmin.us | perl - -M https://cpan.metacpan.org -n Mojo::Pg
 
 status "Installing Starman"
 perl -S cpanm Starman 2>&1 | indent
