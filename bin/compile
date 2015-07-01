@@ -43,6 +43,7 @@ if [ -n "$PERL_VERSION" ] && [ "$PERL_VERSION" != "system" ]; then
     # Set up so we can use Perl right away
     export PERL5LIB="$BUILD_DIR/vendor/perl/lib/$PERL_VERSION:$BUILD_DIR/vendor/perl/lib/site_perl/$PERL_VERSION"
     echo "export PATH=\"\$HOME/vendor/perl/bin:\$PATH\";" > $BUILD_DIR/.profile.d/buildpack_vendor_perl.sh
+    echo "export PERL5LIB=\"\$BUILD_DIR/vendor/perl/lib/\$PERL_VERSION:\$BUILD_DIR/vendor/perl/lib/site_perl/\$PERL_VERSION\";" >> $BUILD_DIR/.profile.d/buildpack_vendor_perl.sh
     for package in $PERL_LIBS; do
         PERL_PACKAGE="${PERL_URL%/}/perl-$PERL_VERSION-$package.tgz"
         status "Vendoring $PERL_PACKAGE"
