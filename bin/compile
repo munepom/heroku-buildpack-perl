@@ -94,6 +94,9 @@ fi
 status "Installing dependencies (cpanm)"
 perl -S cpanm --installdeps . 2>&1 | indent
 
+# install Mojolicious
+curl -L https://cpanmin.us | perl - -M https://cpan.metacpan.org -n Mojolicious
+
 # install Mojo::Pg
 curl -L https://cpanmin.us | perl - -M https://cpan.metacpan.org -n Mojo::Pg
 
